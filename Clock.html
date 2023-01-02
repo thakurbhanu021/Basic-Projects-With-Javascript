@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Clock Using Javascript</h1>
+    <div style="display: flex; justify-content: center; border-radius: 10px; background-color: rgb(211, 211, 211); width: 50%; margin:0 auto;padding: 20px 0px; font-size: 22px;">
+        <span id="date" style="margin-right:10px"></span>
+        <span id="time"></span>
+    </div>
+
+    <script>
+        function DateTime() {
+            let a = new Date();
+            let d = a.getDate();
+            let dy = a.getDay();
+            let y = a.getFullYear();
+            let h = a.getHours();
+            let m = a.getMinutes();
+            let s = a.getSeconds();
+
+            m = checkTime(m);
+            s = checkTime(s);
+
+            date.innerHTML = 'Date -' + d + '/' + dy + '/' + y;
+            time.innerHTML = 'Time -' + h + ':' + m + ':' + s;
+        }
+        setInterval(DateTime, 1000);
+
+        function checkTime(e) {
+            if (e < 10) {
+                e = '0' + e
+            }
+            return e;
+        }
+
+
+
+    </script>
+</body>
+
+</html>

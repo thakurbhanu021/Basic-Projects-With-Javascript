@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guess Game</title>
+</head>
+
+<body>
+    <h1>GameSite</h1>
+    <p> This program will generate a random number. Please input your guess in the box!</p>
+    <button onclick="guessgame()">Press me to play a quick game!</button>
+    <script>
+        function guessgame() {
+            let x = Math.floor((Math.random() * 100) + 1);
+        alert("Welcome to Number guessing game")
+        alert("We are generating a random number for you")
+        alert("please wait...")
+        let a = prompt("Number generated, Please guess the number")
+        a = Number.parseInt(a);
+        let count = 1;
+        do {
+            if (a < x) {
+                count++;
+                a = prompt("entered number is lower than generated number please enter a higher number than " + a);
+            }
+            else if (a > x) {
+                count++;
+                a = prompt("entered number is greater than generated number please enter a lower number than " + a);
+            }
+        } while (a != x)
+        alert("Congratulations you have successfully guessed the number " + x + " in " + count + " times ");
+        }    
+    </script>
+</body>
+</html>

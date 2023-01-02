@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackerman</title>
+</head>
+
+<body style="background-color: black; color:rgb(74, 249, 74); font-size: 28px;">
+    <p style="text-align: center;">Welcome to Hack Tool</p>
+    <div style="font-size: 22px;" id="text">
+
+    </div>
+    <script>
+        let a = [
+            'Initializing Hack tool',
+            'Connecting to Facebook...',
+            'Connecting to Server 1....',
+            'Connecting failed. Retrying',
+            'Connecting to Server 2...',
+            'Connected Successfully...',
+            'Hacking Bhanu021',
+            'Trying Brute Force...',
+            '200k passwords tried....',
+            'Match Not Found',
+            'Another 250k passwords tried...',
+            'Match not Found',
+            'Trying Char Combinations',
+            'Matching',
+            'Match Found',
+            'Accessing account',
+            'Hack Successful'
+        ]
+
+        const Wait = async (sec) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => { resolve(true) }, sec * 1000)
+            })
+        }
+
+        const HackTool = async (message) => {
+            await Wait(3);
+            text.innerHTML += message + '<br>'
+        }
+        (async()=>{
+            for(let i=0 ; i<a.length;i++){
+                await HackTool(a[i]);
+            }
+        })()
+
+    </script>
+</body>
+
+</html>
