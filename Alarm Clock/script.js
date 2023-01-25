@@ -1,5 +1,10 @@
 const currentTime = document.querySelector('h1'),
-selectMenu = document.querySelectorAll("select");
+content = document.querySelector('.content'),
+selectMenu = document.querySelectorAll("select"),
+setAlarmBtn = document.querySelector('.button');
+
+let alarmTime , isAlarmSet = false;
+let audio = new Audio('./files/ringtone.mp3');
 
 for (let i = 12; i > 0; i--) {
   i = i < 10 ? "0" + i : i;
@@ -32,5 +37,34 @@ setInterval(()=>{
     m = m<10? '0'+ m : m;
     s = s<10? '0'+ s : s;
 
-    currentTime.innerText = `${h} : ${m} : ${s}  ${ampm} ` ;
+    currentTime.innerText = `${h}:${m}:${s} ${ampm} ` ;
+
+    if(alarmTime ==  `${h}:${m} ${ampm}`){
+      audio.play();
+      audio.loop = true;
+    }
 },1000);
+
+function setAlarm(){
+  if(isAlarmSet){
+    alarmTime= '';
+    audio.pause();
+    content.classList.remove('disable');
+    setAlarmBtn.innerText = 'Set Alarm'
+    return isAlarmSet = false;
+  }
+    let time = `${selectMenu[0].value}:${selectMenu[1].value} ${selectMenu[2].value}`
+    
+    if(time.includes('Hours') || time.includes('Minutes') || time.includes('AM/PM') ) {
+        alert('Please select a valid time to set alarm')
+    }
+
+    isAlarmSet = true;
+    alarmTime = time;
+    content.classList.add('disable');
+    setAlarmBtn.innerText = 'Clear Alarm'
+    console.log(alarmTime)
+
+}
+
+setAlarmBtn.addEventListener('click',setAlarm);
